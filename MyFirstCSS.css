@@ -1,0 +1,72 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Raleway:900,700,400);
+
+/*表格样式*/
+table {
+	width:90%; margin: 5px auto;background-color: rgba(255,255,255,0.5);}
+/*border-collapse:collapse合并内外边距(去除表格单元格默认的2个像素内外边距*/
+th, td {
+	line-height:25px;
+	text-align:center;
+	border:1px solid #ffffff;
+	background-color: rgba(255,255,255,0.7);
+}
+th {font-weight:bold;}
+td:hover {background-color: rgba(230,230,230,0.5);}
+
+body { 
+	background: url(bkground.png) no-repeat;
+	background-attachment: fixed;
+	background-size:cover;
+	filter:alpha(Opacity=80);-moz-opacity:1;opacity: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	padding: 25px;
+}
+
+*,
+*:after,
+*:before {
+	margin: 0;
+	padding: 0px;
+    font-family: 'Raleway', sans-serif;	
+	font-sizing:10px;
+}
+a { 
+	padding: 0;
+	margin: 0;
+	text-decoration: none; 
+	transition: background-color .4s linear, color .4s linear;
+	color: #1abc9c;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color:#696E74;
+}
+
+input {
+	font-size: 17px;
+	border-radius: 2px;
+	line-height: 28px;
+	padding: 8px 30px 10px;
+	border: 1px solid #b9b9af;
+	margin-bottom: 10px;
+	background-color:rgba(255,255,255,0.9);
+	-webkit-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+}
+button{
+  border: 0px;
+  width: 90px;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 3px;
+  vertical-align: top;
+  opacity: .9;
+  display: inline-block;
+  box-shadow: 2px 2px #74a3b0;
+
+}

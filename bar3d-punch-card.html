@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0;text-align: center;">
+       <div id="container" style="height: 800px;width:800px; margin: 0 auto "></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+var conferences = ['ECCV','NIPS','SIGKDD','WWW','SIGIR','CVPR','ICCV','NAACL','ICML','AAAI','ACL','EMNLP','IJCAI'];
+var years = ['1976-1981', '1982-1986', '1987-1991','1992-1996', '1997-2001', '2002-2006', '2007-2011','2012-2016'];
+
+var data = [[0, 0, 0], [0, 1, 0], [0, 2, 112], [0, 3, 447], [0, 4, 565], [0, 5, 932], [0, 6, 699], [0, 7, 1823], [1, 0, 0], [1, 1, 23], [1, 2, 770], [1, 3, 1245], [1, 4, 1394], [1, 5, 1494], [1, 6, 2061], [1, 7, 1919], [2, 0, 0], [2, 1, 0], [2, 2, 0], [2, 3, 232], [2, 4, 653], [2, 5, 1158], [2, 6, 2075], [2, 7, 2124], [3, 0, 0], [3, 1, 1], [3, 2, 126], [3, 3, 347], [3, 4, 1150], [3, 5, 2086], [3, 6, 2184], [3, 7, 3000], [4, 0, 127], [4, 1, 205], [4, 2, 318], [4, 3, 289], [4, 4, 548], [4, 5, 731], [4, 6, 1425], [4, 7, 1406], [5, 0, 0], [5, 1, 45], [5, 2, 536], [5, 3, 1114], [5, 4, 1342], [5, 5, 2027], [5, 6, 3591], [5, 7, 3156], [6, 0, 0], [6, 1, 0], [6, 2, 261], [6, 3, 498], [6, 4, 926], [6, 5, 667], [6, 6, 2458], [6, 7, 2083], [7, 0, 0], [7, 1, 47], [7, 2, 225], [7, 3, 290], [7, 4, 455], [7, 5, 976], [7, 6, 1036], [7, 7, 959], [8, 0, 0], [8, 1, 1], [8, 2, 405], [8, 3, 338], [8, 4, 592], [8, 5, 1592], [8, 6, 1765], [8, 7, 1823], [9, 0, 97], [9, 1, 664], [9, 2, 993], [9, 3, 1075], [9, 4, 1194], [9, 5, 1587], [9, 6, 2719], [9, 7, 4002], [10, 0, 436], [10, 1, 363], [10, 2, 325], [10, 3, 365], [10, 4, 1099], [10, 5, 1476], [10, 6, 2014], [10, 7, 2248], [11, 0, 0], [11, 1, 0], [11, 2, 0], [11, 3, 0], [11, 4, 48], [11, 5, 375], [11, 6, 751], [11, 7, 1368], [12, 0, 771], [12, 1, 698], [12, 2, 1218], [12, 3, 946], [12, 4, 985], [12, 5, 1025], [12, 6, 1950], [12, 7, 2064]];
+
+option = {
+    tooltip: {},
+    visualMap: {
+        max: 3000,
+        inRange: {
+            color: ['#313695','#313695','#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+        }
+    },
+    xAxis3D: {
+        type: 'category',
+        data: years
+    },
+    yAxis3D: {
+        type: 'category',
+        data: conferences
+    },
+    zAxis3D: {
+        type: 'value'
+    },
+    grid3D: {
+        boxWidth: 200,
+        boxDepth: 80,
+        light: {
+            main: {
+                intensity: 1.2
+            },
+            ambient: {
+                intensity: 0.3
+            }
+        }
+    },
+    series: [{
+        type: 'bar3D',
+        data: data.map(function (item) {
+            return {
+                value: [item[1], item[0], item[2]]
+            }
+        }),
+        shading: 'color',
+
+        label: {
+            show: false,
+            textStyle: {
+                fontSize: 16,
+                borderWidth: 1
+            }
+        },
+        
+        itemStyle: {
+            opacity: 0.4
+        },
+
+        emphasis: {
+            label: {
+                textStyle: {
+                    fontSize: 20,
+                    color: '#900'
+                }
+            },
+            itemStyle: {
+                color: '#900'
+            }
+        }
+    }]
+}
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
